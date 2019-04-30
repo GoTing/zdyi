@@ -1,0 +1,374 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title>自定义</title>
+    <link rel="stylesheet" href="css/function.css"/>
+</head>
+<body style="min-width: 970px;">
+<div class="wx-page">
+    <h3>自定义菜单</h3>
+    <div class="nav_co custom">
+        <div class="msg">
+            <p style="float: left;margin-right: 10px"><img src="http://static.yuntongauto.com/web/manage/images/look.png" alt="" style="margin-top:5px;"/></p>
+            <p class='left' style="margin-left: 10px;">菜单编辑中 <br/>菜单未发布，请确认菜单编辑完成后点击“保存”，点击“发布”同步到手机。</p>
+        </div>
+        <!--手机显示的菜单栏-->
+        <div class="left" style="margin-left: 30px">
+            <div class="box1">
+                <img src="http://static.yuntongauto.com/web/manage/images/phone.png" alt=""/>
+                <div class="bto">
+                    <div class="btn_menu" style='border-left:1px solid #c6c6c6'>
+                        <span><i></i></span>
+                        <b>&times;</b>
+                        <a href="javascript:void(0)" class="btn_top">
+                            <div class="addzi"><i></i></div>
+                        </a>
+                    </div>
+                    <div class="btn_menu btn1">
+                        <span><i></i></span>
+                        <b>&times;</b>
+                        <a href="javascript:void(0)" class="btn_top">
+                            <div class="addzi"><i></i></div>
+                        </a>
+                    </div>
+                    <div class="btn_menu wid_92 nober_r btn1" style="margin-right: -1px">
+                        <span><i></i></span>
+                        <b>&times;</b>
+                        <a href="javascript:void(0)" class="btn_top">
+                            <div class="addzi"><i></i></div>
+                        </a></div>
+                </div>
+            </div>
+            <a href="javascript:void(0)" class="send send1 left" id="up_num">菜单排序</a>
+        </div>
+        <div class="cont left">
+            <div class="pad_120 pad2" style="background-color: rgb(244,245,249);display: none">
+                <p class="mainTit">菜单名称<span class="right dele">删除子菜单</span></p>
+                <p class='myp'>
+                    <span class="left">子菜单名称</span>
+                    <span class="left"><input type="text"
+                                              style="height: 30px;width: 275px;text-indent:10px;border:1px solid #e7e7eb"
+                                              placeholder="菜单名称" value="" id="mytitle2"/></span>
+                </p>
+                <p class='myp'>
+                    <span class="left">&nbsp;</span>
+                    <span class="left cor_gay">字数不超过8个汉字或16个字母</span>
+                </p>
+                <p class='myp'>
+                    <span class="left">子菜单内容</span>
+                    <label for="sendmsg1"><span class="left"> <input type="radio" id="sendmsg1" name="menu"/>发送消息</span></label>
+                    <label for="sendmsg2"><span class="left"> <input type="radio" checked id="sendmsg2" name="menu"/> 跳转网页</span></label>
+                </p>
+                <div class="sendcont hide_box">
+                    <div class="nav1">
+                        <a href="javascript:void(0)" class="on">
+                            <em></em>图文
+                        </a>
+                        <a href="javascript:void(0)">
+                            <em></em>文字
+                        </a>
+                        <a href="javascript:void(0)">
+                            <em></em>图片
+                        </a>
+                        <a href="javascript:void(0)">
+                            <em></em>语音
+                        </a>
+                        <a href="javascript:void(0)">
+                            <em></em>视频
+                        </a>
+                    </div>
+                    <div class="txt" style="display: block">
+                        <div class="txt1">
+                            <img src="http://static.yuntongauto.com/web/manage/images/sucai.jpg" alt=""/>
+                        </div>
+                        <div class="txt1">
+                            <img src="http://static.yuntongauto.com/web/manage/images/tuwen.jpg" alt=""/>
+                        </div>
+                        <div class="clear"></div>
+                    </div>
+                    <div class="txt">
+                        <textarea class="myarea"></textarea>
+                    </div>
+                    <div class="txt">
+                        <div class="txt1">
+                            <img src="http://static.yuntongauto.com/web/manage/images/sucai.jpg" alt=""/>
+                        </div>
+                        <div class="txt1">
+                            <img src="http://static.yuntongauto.com/web/manage/images/shangchuan.jpg" alt=""
+                                 style="margin-top: 32px"/>
+                            <input type="file"/>
+                        </div>
+                        <div class="clear"></div>
+                    </div>
+
+                    <div class="txt">
+                        <div class="txt1">
+                            <img src="http://static.yuntongauto.com/web/manage/images/sucai.jpg" alt=""/>
+                        </div>
+                        <div class="txt1">
+                            <img src="http://static.yuntongauto.com/web/manage/images/yuyin.jpg" alt=""
+                                 style="margin-top: 30px"/>
+                        </div>
+                        <div class="clear"></div>
+                    </div>
+                    <div class="txt">
+                        <div class="txt1">
+                            <img src="http://static.yuntongauto.com/web/manage/images/sucai.jpg" alt=""/>
+                        </div>
+                        <div class="txt1">
+                            <img src="http://static.yuntongauto.com/web/manage/images/autio.jpg" alt=""
+                                 style="margin-top: 30px"/>
+                        </div>
+                        <div class="clear"></div>
+                    </div>
+                </div>
+                <div class="menu_cont hide_box" style="display: block">
+                    <p> 订阅用户点击该菜单会跳到以下链接</p>
+                    <label for="urlText" class="frm_label">页面地址</label>
+                    <input type="text" class="frm_input urlz" id="urlText" placeholder="请输入网址" value="">
+                    <p class="urlz-error">需要填写 http://</p>
+                </div>
+            </div>
+            <div class="pad_120 pad1" style="background-color: rgb(244,245,249)">
+                <p class="mainTit">菜单名称</p>
+                <p class='myp'>
+                    <span class="left">菜单名称</span>
+                    <span class="left"><input type="text" maxlength="16"
+                                              style="height: 30px;width: 275px;text-indent:10px;border:1px solid #e7e7eb"
+                                              placeholder="菜单名称" value="" id="mytitle1"/></span>
+                </p>
+                <p class='myp'>
+                    <span class="left">&nbsp;</span>
+                    <span class="left cor_gay">字数不超过8个汉字或16个字母</span>
+                </p>
+                <p class='myp'>
+                    <span class="left">菜单内容</span>
+                    <label for="sendmsg"><span class="left"> <input type="radio" id="sendmsg"
+                                                                    name="menu"/>发送消息</span></label>
+                    <label for="sendmsg3"><span class="left"> <input type="radio" checked id="sendmsg3" name="menu"/> 跳转网页</span></label>
+                </p>
+                <div class="sendcont hide_box">
+                    <div class="nav1">
+                        <a href="javascript:void(0)" class="on">
+                            <em></em>图文
+                        </a>
+                        <a href="javascript:void(0)">
+                            <em></em>文字
+                        </a>
+                        <a href="javascript:void(0)">
+                            <em></em>图片
+                        </a>
+                        <a href="javascript:void(0)">
+                            <em></em>语音
+                        </a>
+                        <a href="javascript:void(0)">
+                            <em></em>视频
+                        </a>
+                    </div>
+                    <div class="txt" style="display: block">
+                        <div class="txt1">
+                            <img src="http://static.yuntongauto.com/web/manage/images/sucai.jpg" alt=""/>
+                        </div>
+                        <div class="txt1">
+                            <img src="http://static.yuntongauto.com/web/manage/images/tuwen.jpg" alt=""/>
+                        </div>
+                        <div class="clear"></div>
+                    </div>
+                    <div class="txt">
+                        <textarea class="myarea"></textarea>
+                    </div>
+                    <div class="txt">
+                        <div class="txt1">
+                            <img src="http://static.yuntongauto.com/web/manage/images/sucai.jpg" alt=""/>
+                        </div>
+                        <div class="txt1">
+                            <img src="http://static.yuntongauto.com/web/manage/images/shangchuan.jpg" alt=""
+                                 style="margin-top: 32px"/>
+                            <input type="file"/>
+                        </div>
+                        <div class="clear"></div>
+                    </div>
+                    <div class="txt">
+                        <div class="txt1">
+                            <img src="http://static.yuntongauto.com/web/manage/images/sucai.jpg" alt=""/>
+                        </div>
+                        <div class="txt1">
+                            <img src="http://static.yuntongauto.com/web/manage/images/yuyin.jpg" alt=""
+                                 style="margin-top: 30px"/>
+                        </div>
+                        <div class="clear"></div>
+                    </div>
+                    <div class="txt">
+                        <div class="txt1">
+                            <img src="http://static.yuntongauto.com/web/manage/images/sucai.jpg" alt=""/>
+                        </div>
+                        <div class="txt1">
+                            <img src="http://static.yuntongauto.com/web/manage/images/autio.jpg" alt=""
+                                 style="margin-top: 30px"/>
+                        </div>
+                        <div class="clear"></div>
+                    </div>
+                </div>
+                <div class="menu_cont hide_box" style="display: block">
+                    <p> 订阅用户点击该菜单会跳到以下链接</p>
+                    <label for="urlText1" class="frm_label">页面地址</label>
+                    <input type="text" class="frm_input urlz" id="urlText1" placeholder="请输入网址" value="">
+                    <p class="urlz-error">不需要填写 http://</p>
+                </div>
+            </div>
+            <a href="javascript:void(0)" class="send send2 left" id="save">保存</a>
+            <a href="javascript:void(0)" class="send send1 left" style="margin-left:20px;">发布</a>
+        </div>
+        <div class="clear"></div>
+    </div>
+    <div class="myalert">
+        请输入
+        <a class="close">确定</a>
+    </div>
+</div>
+
+</body>
+<script src="http://static.yuntongauto.com/js/jquery.min.js"></script>
+<script>
+    //改版0330
+    $('.myp label').click(function () {
+        $(this).parent().parent().find('.hide_box').hide();
+        var num = $(this).index() - 1;
+        $(this).parent().parent().find('.hide_box').eq(num).show();
+    })
+    /*弹框关闭*/
+    $('.myalert').on('click','.close',function () {
+        $(this).parent().hide();
+    })
+
+    var a = 1;
+    var b = 1;
+    $('.sel').click(function () {
+        $(this).parent().find('.opt').toggle();
+    });
+    $('.opt li').click(function () {
+        $(this).parent().parent().find('.sel').html($(this).html() + '<i></i>');
+        $(this).parent().hide();
+    });
+    $('.sendcont:eq(0) a').click(function () {
+        $(this).addClass('on').siblings().removeClass('on');
+        $('.sendcont:eq(0) .txt:eq(' + $(this).index() + ')').show().siblings('.txt').hide();
+    });
+    $('.sendcont:eq(1) a').click(function () {
+        $(this).addClass('on').siblings().removeClass('on');
+        $('.sendcont:eq(1) .txt:eq(' + $(this).index() + ')').show().siblings('.txt').hide();
+    });
+    var mtop;
+    var flag = false;
+    $('.btn_menu').click(function () {
+        $('.pad1').show();
+        $('.pad2').hide();
+        var obj=$(this)
+        mtop = parseInt(obj.find('.btn_top').css('top'));
+
+        if (obj.find('span>i').length) {
+            obj.find('span').html('菜单名称')
+        } else {
+            $('#mytitle1').val(obj.find('span').html())
+        }
+        $('.btn_top').hide();
+        if (obj.find('span>i')) {
+            obj.addClass('add-menu')
+        } else {
+            obj.removeClass('add-menu')
+        }
+        obj.addClass('on').siblings().removeClass('on');
+        $('.btn_menu.on .btn_top').show();
+        obj.find('.btn_top').show().css({'width': '88px'});
+    })
+
+    $('.btn_menu b').click(function (event) {
+        if ($('.btn_menu.on .btn_top .zicaidan').length) {
+            $('.myalert').html('有子菜单，不能删除<a class="close"">确定</a>').show();
+        } else {
+            $(this).parent().find('span').html('<i></i>');
+            $(this).parent().removeClass('add-menu');
+        }
+        event.stopPropagation();
+    })
+    $('.addzi').click(function () {
+
+        mtop = parseInt($(this).parent().css('top'));
+
+        
+
+        if (mtop < -320) {
+            $('.myalert').html('最多6个子菜单<a class="close"">确定</a>').show();
+
+            return null;
+        }
+        mtop -= 50;
+        $(this).parent().prepend('<div class="zicaidan">子菜单名称 <em class=" arrow"></em></div>');
+        $(this).parent().css({
+            'top': mtop
+        });
+        $('.zicaidan').click(function (event) {
+            $(this).addClass('on').siblings().removeClass('on');
+            $('.pad2').show();
+            $('.pad1').hide();
+            event.stopPropagation();
+        })
+
+    })
+
+    $('.urlz').blur(function () {
+        var str = /[\w\-_]+(\.[\w\-_]+)+([\w\-\.,@?^=%&amp;:/~\+#]*[\w\-\@?^=%&amp;/~\+#])?/
+        if (!str.test($(this).val())) {
+            $(this).parent().find(".urlz-error").html("网址输入有误");
+        } else {
+            $(this).parent().find(".urlz-error").html("不需要填写 http://");
+        }
+    })
+
+    $('.dele').click(function () {
+        if ($('.btn_menu.on .zicaidan.on').length) {
+            $('.btn_menu.on div.zicaidan.on').remove()
+            mtop = parseInt($('.btn_menu.on .btn_top').css('top'));
+            mtop += 50;
+            $('.btn_menu.on a.btn_top').css({
+                'top': mtop
+            })
+        } else {
+            $('.myalert').html('请选中一个要删除的子菜单<a class="close">确定</a>').show();
+        }
+    });
+    //点击保存的时候
+    $('.send2').click(function () {
+        var mainTit=$('#mytitle1'),subTit=$('#mytitle2');
+        if ($('.pad1').css('display') == 'block') {
+            if (mainTit.val()) {
+                $('.btn_menu.on:not(".btn_top")').find('span').html(mainTit.val());
+                mainTit.val('')
+            } else {
+                $('.myalert').html('请填写菜单名称<a class="close">确定</a>').show();
+            }
+        }
+        if ($('.pad2').css('display') == 'block') {
+            var subMenu=$('.btn_menu.on .zicaidan.on')
+            if (subTit.val()) {
+                if (subMenu.find('.arrow').css('display') == 'none') {
+                    subMenu.html(subTit.val() + '<em class="arrow" style="display: none"></em>');
+                } else {
+                    subMenu.html(subTit.val() + '<em class="arrow" style="display: block"></em>');
+                }
+                subTit.val('')
+            } else {
+                $('.myalert').html('请填写子菜单名称 <a class="close">确定</a>').show();
+            }
+        }
+    })
+    /*排序*/
+    $('#up_num').click(function () {
+        var arrowBtn = $('.zicaidan em.arrow');
+        arrowBtn.toggle().click(function () {
+            $(this).parent().parent().prepend($(this).parent());
+        })
+    })
+</script>
+</html>
