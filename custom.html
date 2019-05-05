@@ -3,18 +3,22 @@
 <head lang="en">
     <meta charset="UTF-8">
     <title>自定义</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <!--当用户安装过chrome的插件，即让电脑里面的IE使用Webkit引擎及V8引擎进行排版及运算，
+    没有安装，则会让IE以最高的文档模式IE=Edge展现效果-->
+    <meta http-equiv="X-UA-Compatible" content="IE=Edge，chrome=1">
     <link rel="stylesheet" href="css/function.css"/>
 </head>
-<body style="min-width: 970px;">
+<body>
 <div class="wx-page">
     <h3>自定义菜单</h3>
     <div class="nav_co custom">
         <div class="msg">
             <p style="float: left;margin-right: 10px"><img src="http://static.yuntongauto.com/web/manage/images/look.png" alt="" style="margin-top:5px;"/></p>
-            <p class='left' style="margin-left: 10px;">菜单编辑中 <br/>菜单未发布，请确认菜单编辑完成后点击“保存”，点击“发布”同步到手机。</p>
+            <p class='left'>菜单编辑中 <br/>菜单未发布，请确认菜单编辑完成后点击“保存”，点击“发布”同步到手机。</p>
         </div>
         <!--手机显示的菜单栏-->
-        <div class="left" style="margin-left: 30px">
+        <div class="left phone_box">
             <div class="box1">
                 <img src="http://static.yuntongauto.com/web/manage/images/phone.png" alt=""/>
                 <div class="bto">
@@ -43,7 +47,7 @@
             <a href="javascript:void(0)" class="send send1 left" id="up_num">菜单排序</a>
         </div>
         <div class="cont left">
-            <div class="pad_120 pad2" style="background-color: rgb(244,245,249);display: none">
+            <div class="pad_120 pad2" >
                 <p class="mainTit">菜单名称<span class="right dele">删除子菜单</span></p>
                 <p class='myp'>
                     <span class="left">子菜单名称</span>
@@ -130,7 +134,7 @@
                     <p class="urlz-error">需要填写 http://</p>
                 </div>
             </div>
-            <div class="pad_120 pad1" style="background-color: rgb(244,245,249)">
+            <div class="pad_120 pad1" >
                 <p class="mainTit">菜单名称</p>
                 <p class='myp'>
                     <span class="left">菜单名称</span>
@@ -218,7 +222,7 @@
                 </div>
             </div>
             <a href="javascript:void(0)" class="send send2 left" id="save">保存</a>
-            <a href="javascript:void(0)" class="send send1 left" style="margin-left:20px;">发布</a>
+            <a href="javascript:void(0)" class="send send1 left" id="publish">发布</a>
         </div>
         <div class="clear"></div>
     </div>
@@ -231,58 +235,55 @@
 </body>
 <script src="http://static.yuntongauto.com/js/jquery.min.js"></script>
 <script>
-    //改版0330
+    //发送消息和跳转网页的 切换
     $('.myp label').click(function () {
-        $(this).parent().parent().find('.hide_box').hide();
+        var contBox=$(this).parent().parent().find('.hide_box');
         var num = $(this).index() - 1;
-        $(this).parent().parent().find('.hide_box').eq(num).show();
+        contBox.hide();
+        contBox.eq(num).show();
     })
     /*弹框关闭*/
     $('.myalert').on('click','.close',function () {
         $(this).parent().hide();
     })
-
-    var a = 1;
-    var b = 1;
-    $('.sel').click(function () {
-        $(this).parent().find('.opt').toggle();
-    });
-    $('.opt li').click(function () {
-        $(this).parent().parent().find('.sel').html($(this).html() + '<i></i>');
-        $(this).parent().hide();
-    });
-    $('.sendcont:eq(0) a').click(function () {
+    /*
+    *  图文，文字，语音，图片，视频
+    *  */
+    $('.sendcont a').click(function () {
+        var index=$(this).parents('.pad_120').index()
         $(this).addClass('on').siblings().removeClass('on');
-        $('.sendcont:eq(0) .txt:eq(' + $(this).index() + ')').show().siblings('.txt').hide();
+        $('.sendcont:eq('+index+') .txt:eq(' + $(this).index() + ')').show().siblings('.txt').hide();
     });
-    $('.sendcont:eq(1) a').click(function () {
-        $(this).addClass('on').siblings().removeClass('on');
-        $('.sendcont:eq(1) .txt:eq(' + $(this).index() + ')').show().siblings('.txt').hide();
-    });
+    //获取当前点击的元素的top值
     var mtop;
-    var flag = false;
+
     $('.btn_menu').click(function () {
         $('.pad1').show();
         $('.pad2').hide();
-        var obj=$(this)
+        var obj=$(this);
         mtop = parseInt(obj.find('.btn_top').css('top'));
 
         if (obj.find('span>i').length) {
-            obj.find('span').html('菜单名称')
+             obj.find('span').html('菜单名称')
         } else {
-            $('#mytitle1').val(obj.find('span').html())
+            if(obj.find('span').html()!='菜单名称'){
+                $('#mytitle1').val(obj.find('span').html())
+            }
         }
+        //所有的子菜单内容隐藏
         $('.btn_top').hide();
         if (obj.find('span>i')) {
+            //add-menu 这个类名 是主菜单上hover 显示删除按钮的开关
             obj.addClass('add-menu')
         } else {
             obj.removeClass('add-menu')
         }
         obj.addClass('on').siblings().removeClass('on');
+        //点中的子菜单显示
         $('.btn_menu.on .btn_top').show();
-        obj.find('.btn_top').show().css({'width': '88px'});
+        obj.find('.btn_top').show()
     })
-
+    //删除主菜单
     $('.btn_menu b').click(function (event) {
         if ($('.btn_menu.on .btn_top .zicaidan').length) {
             $('.myalert').html('有子菜单，不能删除<a class="close"">确定</a>').show();
@@ -292,15 +293,12 @@
         }
         event.stopPropagation();
     })
-    $('.addzi').click(function () {
+    //添加子菜单
+    $('.addzi').click(function (event) {
 
         mtop = parseInt($(this).parent().css('top'));
-
-        
-
         if (mtop < -320) {
             $('.myalert').html('最多6个子菜单<a class="close"">确定</a>').show();
-
             return null;
         }
         mtop -= 50;
@@ -308,40 +306,50 @@
         $(this).parent().css({
             'top': mtop
         });
-        $('.zicaidan').click(function (event) {
-            $(this).addClass('on').siblings().removeClass('on');
-            $('.pad2').show();
-            $('.pad1').hide();
-            event.stopPropagation();
-        })
-
+        event.stopPropagation();
+    })
+    //子菜单
+    $('.btn_top').on('click','.zicaidan',function (event) {
+        $(this).addClass('on').siblings().removeClass('on');
+        $('.pad2').show();
+        $('.pad1').hide();
+        event.stopPropagation();
     })
 
+    //输入网址的校验
     $('.urlz').blur(function () {
         var str = /[\w\-_]+(\.[\w\-_]+)+([\w\-\.,@?^=%&amp;:/~\+#]*[\w\-\@?^=%&amp;/~\+#])?/
-        if (!str.test($(this).val())) {
-            $(this).parent().find(".urlz-error").html("网址输入有误");
-        } else {
-            $(this).parent().find(".urlz-error").html("不需要填写 http://");
+        if($(this).val()){
+            console.log($(this).val())
+            if (!str.test($(this).val())) {
+                $(this).parent().find(".urlz-error").html("网址输入有误").css('color','red');
+            } else {
+                $(this).parent().find(".urlz-error").html("不需要填写 http://").css('color','#5db2ff');
+            }
+        }else{
+            $(this).parent().find(".urlz-error").html("不需要填写 http://").css('color','#5db2ff');
         }
-    })
 
+    })
+    //删除子菜单
     $('.dele').click(function () {
         if ($('.btn_menu.on .zicaidan.on').length) {
-            $('.btn_menu.on div.zicaidan.on').remove()
-            mtop = parseInt($('.btn_menu.on .btn_top').css('top'));
-            mtop += 50;
-            $('.btn_menu.on a.btn_top').css({
-                'top': mtop
-            })
+            upItem()
         } else {
             $('.myalert').html('请选中一个要删除的子菜单<a class="close">确定</a>').show();
         }
     });
+    //样式修改 上移一个距离
+    function upItem(){
+        $('.btn_menu.on div.zicaidan.on').remove();
+        mtop = parseInt($('.btn_menu.on .btn_top').css('top'));
+        mtop += 50;
+        $('.btn_menu.on a.btn_top').css({'top': mtop})
+    }
     //点击保存的时候
     $('.send2').click(function () {
         var mainTit=$('#mytitle1'),subTit=$('#mytitle2');
-        if ($('.pad1').css('display') == 'block') {
+        if (isBlock($('.pad1'))) {
             if (mainTit.val()) {
                 $('.btn_menu.on:not(".btn_top")').find('span').html(mainTit.val());
                 mainTit.val('')
@@ -349,10 +357,10 @@
                 $('.myalert').html('请填写菜单名称<a class="close">确定</a>').show();
             }
         }
-        if ($('.pad2').css('display') == 'block') {
+        if (isBlock($('.pad2'))) {
             var subMenu=$('.btn_menu.on .zicaidan.on')
             if (subTit.val()) {
-                if (subMenu.find('.arrow').css('display') == 'none') {
+                if (isBlock(subMenu.find('.arrow'))) {
                     subMenu.html(subTit.val() + '<em class="arrow" style="display: none"></em>');
                 } else {
                     subMenu.html(subTit.val() + '<em class="arrow" style="display: block"></em>');
@@ -363,6 +371,17 @@
             }
         }
     })
+    //判断是否展示的 方法
+    function isBlock(obj){
+        if(obj){
+            if(obj.css('display') == 'block'){
+                return true
+            }else{
+                return  false
+            }
+        }
+        return  false
+    }
     /*排序*/
     $('#up_num').click(function () {
         var arrowBtn = $('.zicaidan em.arrow');
